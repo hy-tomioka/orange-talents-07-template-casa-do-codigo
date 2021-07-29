@@ -11,8 +11,11 @@ import java.util.Optional;
 @Component
 public class ProibeEmailDuplicadoAutorValidator implements Validator {
 
-    @Autowired
     private AutorRepository autorRepository;
+
+    public ProibeEmailDuplicadoAutorValidator(AutorRepository autorRepository) {
+        this.autorRepository = autorRepository;
+    }
 
     @Override
     public boolean supports(Class<?> clazz) {
