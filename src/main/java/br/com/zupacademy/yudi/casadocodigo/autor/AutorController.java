@@ -1,11 +1,11 @@
 package br.com.zupacademy.yudi.casadocodigo.autor;
 
 import br.com.zupacademy.yudi.casadocodigo.autor.dto.NovoAutorRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.Validator;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -18,6 +18,14 @@ public class AutorController {
 
     @PersistenceContext
     private EntityManager em;
+
+    @Autowired
+    private ProibeEmailDuplicadoAutorValidator proibeEmailDuplicadoAutorValidator;
+
+    @InitBinder
+    public void init(WebDataBinder binder) {
+        binder.addValidators(proibeEmailDuplicadoAutorValidator);
+    }
 
     @PostMapping
     @Transactional

@@ -27,4 +27,8 @@ public class NovoAutorRequest {
     public AutorEntity toModel() {
         return new AutorEntity(this.nome, this.email, this.descricao);
     }
+
+    public String getEmail() {
+        return this.email;
+    }
 }
