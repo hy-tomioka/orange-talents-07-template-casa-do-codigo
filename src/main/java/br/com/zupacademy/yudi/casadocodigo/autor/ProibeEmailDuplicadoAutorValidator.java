@@ -24,9 +24,8 @@ public class ProibeEmailDuplicadoAutorValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        if (errors.hasErrors()) {
+        if (errors.hasErrors())
             return;
-        }
         NovoAutorRequest request = (NovoAutorRequest) target;
         Optional<AutorEntity> autorOptional = autorRepository.findByEmail(request.getEmail());
         if (autorOptional.isPresent()) {

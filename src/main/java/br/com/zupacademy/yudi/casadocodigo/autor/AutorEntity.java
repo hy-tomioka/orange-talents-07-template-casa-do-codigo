@@ -1,5 +1,7 @@
 package br.com.zupacademy.yudi.casadocodigo.autor;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -16,13 +18,15 @@ public class AutorEntity {
 
     @NotBlank
     private String nome;
-    @NotBlank @Email
+    @NotBlank @Email @Column(unique = true, nullable = false)
     private String email;
     @NotBlank @Size(max = 400)
     private String descricao;
-    private Instant dataRegistro = Instant.now();
+    @CreationTimestamp
+    private Instant dataRegistro;
 
-    public AutorEntity() {
+    @Deprecated
+    private AutorEntity() {
     }
 
     public AutorEntity(@NotBlank String nome, @NotBlank @Email String email,
@@ -30,5 +34,21 @@ public class AutorEntity {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDescricao() {
+        return descricao;
     }
 }

@@ -1,11 +1,11 @@
 package br.com.zupacademy.yudi.casadocodigo.autor;
 
 import br.com.zupacademy.yudi.casadocodigo.autor.dto.NovoAutorRequest;
+import br.com.zupacademy.yudi.casadocodigo.autor.dto.NovoAutorResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @RestController
@@ -21,15 +21,14 @@ public class AutorController {
     }
 
     @InitBinder
-    public void init(WebDataBinder binder) {
+    public void initBinders(WebDataBinder binder) {
         binder.addValidators(proibeEmailDuplicadoAutorValidator);
     }
 
     @PostMapping
-    @Transactional
-    public ResponseEntity<?> cadastrar(@RequestBody @Valid NovoAutorRequest request) {
+    public ResponseEntity<NovoAutorResponse> cadastrar(@RequestBody @Valid NovoAutorRequest request) {
         AutorEntity autor = request.toModel();
         autorRepository.save(autor);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new NovoAutorResponse(autor));
     }
 }

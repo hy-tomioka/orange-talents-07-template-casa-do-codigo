@@ -1,4 +1,4 @@
-package br.com.zupacademy.yudi.casadocodigo.exceptions;
+package br.com.zupacademy.yudi.casadocodigo.generico.exceptions;
 
 public class ErroDeFormularioDto {
 

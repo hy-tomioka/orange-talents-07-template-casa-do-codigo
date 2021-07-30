@@ -1,14 +1,12 @@
 package br.com.zupacademy.yudi.casadocodigo.autor.dto;
 
 import br.com.zupacademy.yudi.casadocodigo.autor.AutorEntity;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-@Validated
 public class NovoAutorRequest {
 
     @NotBlank
