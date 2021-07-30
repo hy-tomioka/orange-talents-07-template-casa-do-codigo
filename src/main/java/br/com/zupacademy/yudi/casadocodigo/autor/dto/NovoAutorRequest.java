@@ -1,7 +1,7 @@
 package br.com.zupacademy.yudi.casadocodigo.autor.dto;
 
 import br.com.zupacademy.yudi.casadocodigo.autor.AutorEntity;
-import org.springframework.validation.annotation.Validated;
+import br.com.zupacademy.yudi.casadocodigo.generico.validacao.UniqueValue;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -12,6 +12,7 @@ public class NovoAutorRequest {
     @NotBlank
     private String nome;
     @NotBlank @Email
+    @UniqueValue(domainClass = AutorEntity.class, fieldName = "email")
     private String email;
     @NotBlank @Size(max = 400)
     private String descricao;

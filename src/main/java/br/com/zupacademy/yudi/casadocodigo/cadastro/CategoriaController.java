@@ -3,8 +3,10 @@ package br.com.zupacademy.yudi.casadocodigo.cadastro;
 import br.com.zupacademy.yudi.casadocodigo.cadastro.dto.NovaCategoriaRequest;
 import br.com.zupacademy.yudi.casadocodigo.cadastro.dto.NovaCategoriaResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -13,17 +15,9 @@ import javax.validation.Valid;
 public class CategoriaController {
 
     private final CategoriaRepository categoriaRepository;
-    private final ProibeCategoriaDuplicadaValidator proibeCategoriaDuplicadaValidator;
 
-    public CategoriaController(CategoriaRepository categoriaRepository,
-                               ProibeCategoriaDuplicadaValidator proibeCategoriaDuplicadaValidator) {
+    public CategoriaController(CategoriaRepository categoriaRepository) {
         this.categoriaRepository = categoriaRepository;
-        this.proibeCategoriaDuplicadaValidator = proibeCategoriaDuplicadaValidator;
-    }
-
-    @InitBinder
-    public void initBinders(WebDataBinder binder) {
-        binder.addValidators(proibeCategoriaDuplicadaValidator);
     }
 
     @PostMapping

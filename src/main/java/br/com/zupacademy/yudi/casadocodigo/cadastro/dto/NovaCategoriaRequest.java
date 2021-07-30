@@ -1,12 +1,14 @@
 package br.com.zupacademy.yudi.casadocodigo.cadastro.dto;
 
 import br.com.zupacademy.yudi.casadocodigo.cadastro.CategoriaEntity;
+import br.com.zupacademy.yudi.casadocodigo.generico.validacao.UniqueValue;
 
 import javax.validation.constraints.NotBlank;
 
 public class NovaCategoriaRequest {
 
     @NotBlank
+    @UniqueValue(domainClass = CategoriaEntity.class, fieldName = "nome")
     private String nome;
 
     @Deprecated
