@@ -6,6 +6,7 @@ import br.com.zupacademy.yudi.casadocodigo.categoria.CategoriaEntity;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "livro")
@@ -89,5 +90,17 @@ public class LivroEntity {
 
     public LocalDate getDataDePublicacao() {
         return dataDePublicacao;
+    }
+
+    public String getAutorDescricao() {
+        return autor.getDescricao();
+    }
+
+    public String getAutorNome() {
+        return autor.getNome();
+    }
+
+    public String getDataFormatada(String pattern) {
+        return this.dataDePublicacao.format(DateTimeFormatter.ofPattern(pattern));
     }
 }
