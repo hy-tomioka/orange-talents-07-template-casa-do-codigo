@@ -1,6 +1,6 @@
-package br.com.zupacademy.yudi.casadocodigo.cadastro.dto;
+package br.com.zupacademy.yudi.casadocodigo.categoria.dto;
 
-import br.com.zupacademy.yudi.casadocodigo.cadastro.CategoriaEntity;
+import br.com.zupacademy.yudi.casadocodigo.categoria.CategoriaEntity;
 
 public class NovaCategoriaResponse {
 

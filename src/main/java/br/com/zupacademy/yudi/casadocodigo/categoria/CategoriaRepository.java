@@ -1,4 +1,4 @@
-package br.com.zupacademy.yudi.casadocodigo.cadastro;
+package br.com.zupacademy.yudi.casadocodigo.categoria;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

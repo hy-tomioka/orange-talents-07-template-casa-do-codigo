@@ -22,7 +22,7 @@ public class ValidacaoExceptionHandler {
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+            @ExceptionHandler(MethodArgumentNotValidException.class)
     public List<ErroDeFormularioDto> handleErroDeValidacao(MethodArgumentNotValidException exception) {
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
         return buildErroDeFormulario(fieldErrors);

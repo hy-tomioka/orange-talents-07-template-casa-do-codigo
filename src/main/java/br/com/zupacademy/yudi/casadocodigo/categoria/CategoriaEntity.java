@@ -1,4 +1,4 @@
-package br.com.zupacademy.yudi.casadocodigo.cadastro;
+package br.com.zupacademy.yudi.casadocodigo.categoria;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -20,14 +20,6 @@ public class CategoriaEntity {
 
     public CategoriaEntity(@NotBlank String nome) {
         this.nome = nome;
-    }
-
-    @Override
-    public String toString() {
-        return "CategoriaEntity{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                '}';
     }
 
     public Long getId() {

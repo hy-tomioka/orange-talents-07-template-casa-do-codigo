@@ -1,7 +1,7 @@
-package br.com.zupacademy.yudi.casadocodigo.cadastro;
+package br.com.zupacademy.yudi.casadocodigo.categoria;
 
-import br.com.zupacademy.yudi.casadocodigo.cadastro.dto.NovaCategoriaRequest;
-import br.com.zupacademy.yudi.casadocodigo.cadastro.dto.NovaCategoriaResponse;
+import br.com.zupacademy.yudi.casadocodigo.categoria.dto.NovaCategoriaRequest;
+import br.com.zupacademy.yudi.casadocodigo.categoria.dto.NovaCategoriaResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
