@@ -42,6 +42,10 @@ public class LivroEntity {
     @JoinColumn(nullable = false)
     private AutorEntity autor;
 
+    @Deprecated
+    private LivroEntity() {
+    }
+
     public LivroEntity(String titulo, String resumo, String sumario, Double preco, Integer numeroDePaginas, String isbn,
                        LocalDate dataDePublicacao, CategoriaEntity categoria, AutorEntity autor) {
         this.titulo = titulo;

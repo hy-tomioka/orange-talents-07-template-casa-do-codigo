@@ -9,6 +9,7 @@ import br.com.zupacademy.yudi.casadocodigo.generico.validacao.UniqueValue;
 import br.com.zupacademy.yudi.casadocodigo.livro.LivroEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.EntityManager;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -35,10 +36,10 @@ public class NovoLivroRequest {
     private LocalDate dataDePublicacao;
 
     @NotNull
-    @ExistsId(domainClass = CategoriaEntity.class, fieldName = "id")
+    @ExistsId(domainClass = CategoriaEntity.class)
     private Long categoriaId;
     @NotNull
-    @ExistsId(domainClass = AutorEntity.class, fieldName = "id")
+    @ExistsId(domainClass = AutorEntity.class)
     private Long autorId;
 
     @Deprecated
@@ -58,13 +59,13 @@ public class NovoLivroRequest {
         this.autorId = autorId;
     }
 
-    public LivroEntity toModel(AutorRepository autorRepository, CategoriaRepository categoriaRepository) {
+    public LivroEntity toModel(EntityManager em) {
 
-        @NotNull Optional<CategoriaEntity> categoria = categoriaRepository.findById(this.categoriaId);
-        @NotNull Optional<AutorEntity> autor = autorRepository.findById(this.autorId);
+        CategoriaEntity categoria = em.find(CategoriaEntity.class, this.categoriaId);
+        AutorEntity autor = em.find(AutorEntity.class, this.autorId);
 
         return new LivroEntity(this.titulo, this.resumo, this.sumario, this.preco, this.numeroDePaginas,
-                this.isbn, this.dataDePublicacao, categoria.get(), autor.get());
+                this.isbn, this.dataDePublicacao, categoria, autor);
     }
 
     public String getTitulo() {
