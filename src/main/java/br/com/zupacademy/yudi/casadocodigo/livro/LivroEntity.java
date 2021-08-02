@@ -24,6 +24,7 @@ public class LivroEntity {
     @Size(max = 500)
     private String resumo;
     private String sumario;
+    @Min(20)
     private Double preco;
     @Column(nullable = false)
     @NotNull
