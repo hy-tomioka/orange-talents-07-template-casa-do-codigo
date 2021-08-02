@@ -11,7 +11,8 @@ public class CategoriaEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank @Column(unique = true, nullable = false)
+    @NotBlank
+    @Column(unique = true, nullable = false)
     private String nome;
 
     @Deprecated

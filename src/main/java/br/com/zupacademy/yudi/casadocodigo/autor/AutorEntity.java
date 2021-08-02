@@ -17,10 +17,13 @@ public class AutorEntity {
     private Long id;
 
     @NotBlank
+    @Column(nullable = false)
     private String nome;
-    @NotBlank @Email @Column(unique = true, nullable = false)
+    @NotBlank @Email
+    @Column(unique = true, nullable = false)
     private String email;
     @NotBlank @Size(max = 400)
+    @Column(nullable = false, length = 400)
     private String descricao;
     @CreationTimestamp
     private Instant dataRegistro;
