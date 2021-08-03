@@ -34,7 +34,7 @@ public class ProibeNuloParaPaisComEstado implements Validator {
             if (estadoIsNull())
                 errors.rejectValue("estadoId", null,
                         "É necessário selecionar um estado para este país.");
-            else if (!estadoIsNull() && estadoExists(estadosDoPais))
+            else if (estadoExists(estadosDoPais))
                 errors.rejectValue("estadoId", null,
                         "Estado inexistente para este país.");
         }
